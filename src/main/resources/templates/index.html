@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>WebSocket Chat</title>
+  <script src="/webjars/sockjs-client/1.1.2/dist/sockjs.min.js"></script>
+  <script src="/webjars/stomp-websocket/2.3.3/dist/stomp.min.js"></script>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+<div id="app">
+  <h1>WebSocket Chat</h1>
+
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" placeholder="Enter your username" v-model="username"/>
+    <button type="button" @click="connect">Connect</button>
+  </div>
+
+  <div>
+    <ul id="messages">
+      <li v-for="message in messages" :class="getMessageClass(message)">
+        <strong v-if="message.type !== 'JOIN' && message.type !== 'LEAVE'"
+                class="mr-2">{{ message.sender }}:</strong>
+        <span>{{ getMessageContent(message) }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <input type="text" id="content" placeholder="Type your message here" v-model="messageContent"/>
+    <button type="button" @click="sendMessage">Send</button>
+  </div>
+</div>
+
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        username: '',
+        messageContent: '',
+        messages: [],
+        stompClient: null,
+      }
+    },
+    methods: {
+      connect() {
+        const socket = new SockJS('/chat');
+        this.stompClient = Stomp.over(socket);
+        this.stompClient.connect({}, (frame) => {
+          console.log('Connected: ' + frame);
+          this.stompClient.subscribe('/topic/public', (message) => {
+            this.showMessage(JSON.parse(message.body));
+          });
+          this.stompClient.send('/app/chat.addUser',
+              {},
+              JSON.stringify({sender: this.username, type: 'JOIN'})
+          );
+        });
+      },
+      sendMessage() {
+        const message = {
+          sender: this.username,
+          content: this.messageContent,
+          type: 'CHAT'
+        };
+        this.stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(message));
+        this.messageContent = '';
+      },
+      showMessage(message) {
+        this.messages.push(message);
+      },
+      getMessageClass(message) {
+        if (message.type === 'JOIN' || message.type === 'LEAVE') {
+          return 'event-message';
+        } else {
+          return 'chat-message';
+        }
+      },
+      getMessageContent(message) {
+        if (message.type === 'JOIN') {
+          return message.sender + ' joined!';
+        } else if (message.type === 'LEAVE') {
+          return message.sender + ' left!';
+        } else {
+          return message.content;
+        }
+      },
+    },
+  });
+
+  app.mount('#app');
+</script>
+</body>
+</html>
