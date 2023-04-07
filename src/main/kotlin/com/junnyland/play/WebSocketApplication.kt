@@ -1,4 +1,4 @@
-package com.junnyland.chatroom
+package com.junnyland.play
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
