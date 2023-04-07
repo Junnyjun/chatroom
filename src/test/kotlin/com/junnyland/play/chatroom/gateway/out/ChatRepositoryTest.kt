@@ -2,7 +2,7 @@ package com.junnyland.play.chatroom.gateway.out
 
 import com.junnyland.play.chatroom.domain.Room
 import com.junnyland.play.chatroom.gateway.out.mongo.ChatMongoRepository
-import org.assertj.core.api.Assertions
+import com.junnyland.play.chatroom.gateway.out.mongo.ChatRepository
 import org.assertj.core.api.Assertions.assertThatCode
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
