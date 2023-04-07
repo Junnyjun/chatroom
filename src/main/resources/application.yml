@@ -8,3 +8,11 @@ spring:
       auto-index-creation: true
       authentication-database: admin
       database: junnyland
+
+  kafka:
+    bootstrap-servers: sub.junnyland:29092, sub.junnyland:39092, sub.junnyland:49092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    template:
+      default-topic: junnyland
