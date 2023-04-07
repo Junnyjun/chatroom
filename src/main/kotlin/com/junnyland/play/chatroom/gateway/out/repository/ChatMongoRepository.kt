@@ -1,4 +1,4 @@
-package com.junnyland.play.chatroom.gateway.out.mongo
+package com.junnyland.play.chatroom.gateway.out.repository
 
 import org.springframework.data.mongodb.repository.MongoRepository
 

@@ -1,8 +1,8 @@
 package com.junnyland.play.chatroom.gateway.out
 
 import com.junnyland.play.chatroom.domain.Room
-import com.junnyland.play.chatroom.gateway.out.mongo.ChatMongoRepository
-import com.junnyland.play.chatroom.gateway.out.mongo.ChatRepository
+import com.junnyland.play.chatroom.gateway.out.repository.ChatMongoRepository
+import com.junnyland.play.chatroom.gateway.out.repository.ChatRepository
 import org.assertj.core.api.Assertions.assertThatCode
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach

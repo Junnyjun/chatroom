@@ -1,4 +1,4 @@
-package com.junnyland.play.chatroom.gateway.out.mongo;
+package com.junnyland.play.chatroom.gateway.out.repository;
 
 import com.junnyland.play.chatroom.domain.Room;
 import org.springframework.data.annotation.Id;

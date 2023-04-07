@@ -1,7 +1,7 @@
-package com.junnyland.play.chatroom.gateway.out.mongo
+package com.junnyland.play.chatroom.gateway.out.repository
 
 import com.junnyland.play.chatroom.domain.Room
-import com.junnyland.play.chatroom.gateway.out.mongo.ChatRoom.byDomain
+import com.junnyland.play.chatroom.gateway.out.repository.ChatRoom.byDomain
 import org.springframework.stereotype.Repository
 
 
