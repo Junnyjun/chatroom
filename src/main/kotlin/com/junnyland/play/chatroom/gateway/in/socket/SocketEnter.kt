@@ -1,4 +1,4 @@
-package com.junnyland.play.chatroom.gateway.`in`
+package com.junnyland.play.chatroom.gateway.`in`.socket
 
 import org.springframework.messaging.handler.annotation.MessageMapping
 import org.springframework.messaging.handler.annotation.Payload

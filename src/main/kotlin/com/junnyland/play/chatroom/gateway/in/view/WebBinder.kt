@@ -1,4 +1,4 @@
-package com.junnyland.play.chatroom.gateway.`in`
+package com.junnyland.play.chatroom.gateway.`in`.view
 
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
