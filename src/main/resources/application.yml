@@ -1,0 +1,10 @@
+spring:
+  data:
+    mongodb:
+      host: 140.238.14.148
+      port: 27017
+      password: junny1234
+      username: junnyland
+      auto-index-creation: true
+      authentication-database: admin
+      database: junnyland
