@@ -1,8 +1,7 @@
-package com.junnyland.play.chatroom.gateway.`in`.message
+package com.junnyland.play.config
 
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.clients.consumer.KafkaConsumer
-import org.apache.kafka.clients.producer.ProducerConfig
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.kafka.annotation.KafkaListener
 import org.springframework.messaging.MessageHeaders
@@ -16,7 +15,7 @@ interface MessageEnter {
     @Component
     class KafkaMessageEnter(
         @Value("\${spring.kafka.bootstrap-servers}") private val bootstrapServers: String,
-    ): MessageEnter{
+    ): MessageEnter {
 
         private val comsumer:KafkaConsumer<String,String> = KafkaConsumer(
             mapOf<String,String>(
@@ -29,13 +28,6 @@ interface MessageEnter {
             )
         )
 
-        @KafkaListener(topics = ["\${spring.kafka.template.default-topic}"])
-        override fun enter(
-            @Headers headers: MessageHeaders,
-            @Payload message: String
-        ) {
-            let {  }
-            println("KafkaMessageEnter: $message")
-        }
+
     }
 }
