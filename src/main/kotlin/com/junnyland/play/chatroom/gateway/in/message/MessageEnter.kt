@@ -18,7 +18,7 @@ interface MessageEnter {
             @Headers headers: MessageHeaders,
             @Payload message: String
         ) {
-            println("KafkaMessageEnter: $message")
+            println("KafkaConsumerConfig: $message")
         }
     }
 
