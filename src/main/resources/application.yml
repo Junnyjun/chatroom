@@ -10,7 +10,7 @@ spring:
       database: junnyland
 
   kafka:
-    bootstrap-servers: sub.junnyland:29092, sub.junnyland:39092, sub.junnyland:49092
+    bootstrap-servers: sub.junnyland.com:29092, sub.junnyland.com:39092, sub.junnyland.com:49092
 
     template:
       default-topic: junnyland

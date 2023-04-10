@@ -17,7 +17,7 @@ interface Receiver {
         private val simpMessageTemplate: SimpMessagingTemplate,
     ) : Receiver {
 
-        @KafkaListener(topics = [TOPIC])
+        @KafkaListener(topics = [TOPIC], groupId = "junnyland")
         override fun enter(
             message: Message,
         ) {
