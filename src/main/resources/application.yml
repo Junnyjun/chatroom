@@ -15,4 +15,6 @@ spring:
     template:
       default-topic: junnyland
 
+chatroom:
+  path: chatroom
 
