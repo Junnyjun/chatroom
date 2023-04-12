@@ -1,11 +1,10 @@
-package com.junnyland.play.config.socket
+package com.junnyland.play.global.socket
 
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import org.springframework.web.socket.TextMessage
 import org.springframework.web.socket.WebSocketSession
 import org.springframework.web.socket.handler.TextWebSocketHandler
-import org.w3c.dom.Text
 
 @Component
 class SocketHandler : TextWebSocketHandler() {

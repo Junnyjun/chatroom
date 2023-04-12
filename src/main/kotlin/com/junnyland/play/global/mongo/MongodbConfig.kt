@@ -1,4 +1,4 @@
-package com.junnyland.play.config.mongo
+package com.junnyland.play.global.mongo
 
 import com.mongodb.client.MongoClient
 import org.springframework.context.annotation.Bean
