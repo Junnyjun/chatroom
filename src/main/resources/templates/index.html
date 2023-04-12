@@ -23,7 +23,7 @@
       stompClient.connect({}, function(frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/sender/chatroom', function(messageOutput) {
+        stompClient.subscribe('/topic/group', function(messageOutput) {
           showMessageOutput(JSON.parse(messageOutput.body));
         });
       });
