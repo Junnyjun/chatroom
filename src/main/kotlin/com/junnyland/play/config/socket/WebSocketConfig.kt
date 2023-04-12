@@ -14,12 +14,14 @@ class WebSocketConfig(
     private val socketHandler: WebSocketHandler,
 ) : WebSocketMessageBrokerConfigurer {
     override fun configureMessageBroker(registry: MessageBrokerRegistry) {
+        registry.setApplicationDestinationPrefixes("/sender")
         registry.enableSimpleBroker("/topic")
-        registry.setApplicationDestinationPrefixes("/kafka")
     }
 
     override fun registerStompEndpoints(registry: StompEndpointRegistry) {
         registry.addEndpoint("/ws-chat")
-            .setAllowedOrigins("*")
+            .setAllowedOriginPatterns("*")
+            .withSockJS()
+            .setSessionCookieNeeded(false)
     }
 }
