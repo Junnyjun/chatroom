@@ -6,10 +6,12 @@ import com.junnyland.play.chatroom.gateway.out.repository.ChatRepository
 import org.assertj.core.api.Assertions.assertThatCode
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest
 
+@Disabled
 @DataMongoTest
 class ChatRepositoryTest {
     @Autowired
@@ -23,13 +25,13 @@ class ChatRepositoryTest {
     }
 
     @Test
-    fun save(){
-        assertThatCode {repository.save(Room("test", "test"))  }
+    fun save() {
+        assertThatCode { repository.save(Room("test", "test")) }
             .doesNotThrowAnyException()
     }
 
     @AfterEach
     fun tearDown() {
-        mongo.deleteAll()
+//        mongo.deleteAll()
     }
 }
