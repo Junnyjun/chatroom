@@ -28,17 +28,12 @@ class KafkaConsumerConfig(
             ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG to bootstrapServers,
             ConsumerConfig.GROUP_ID_CONFIG to "junnyland",
             ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG to StringDeserializer::class.java,
-            ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG to "org.apache.kafka.common.serialization",
+            ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG to JsonDeserializer::class.java,
             ConsumerConfig.MAX_POLL_RECORDS_CONFIG to "500",
             ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG to "true",
         ),
         StringDeserializer(),
         JsonDeserializer<Message>(Message::class.java)
-            .also {
-                it.setRemoveTypeHeaders(false)
-                it.addTrustedPackages("*")
-                it.setUseTypeMapperForKey(true)
-            }
     )
 
 
