@@ -11,7 +11,18 @@ spring:
 
   kafka:
     bootstrap-servers: sub.junnyland.com:29092, sub.junnyland.com:39092, sub.junnyland.com:49092
-
+    consumer:
+      group-id: junnyland
+      max-poll-records: 500
+      enable-auto-commit: true
+      auto-offset-reset: latest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     template:
       default-topic: junnyland
 
