@@ -23,7 +23,8 @@ class KafkaConsumerConfig(
         ConcurrentKafkaListenerContainerFactory<String, Message>()
             .also { it.consumerFactory = consumerFactory() }
 
-    private fun consumerFactory() = DefaultKafkaConsumerFactory(
+    @Bean
+    fun consumerFactory() = DefaultKafkaConsumerFactory(
         mapOf(
             ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG to bootstrapServers,
             ConsumerConfig.GROUP_ID_CONFIG to "junnyland",
@@ -35,6 +36,4 @@ class KafkaConsumerConfig(
         StringDeserializer(),
         JsonDeserializer<Message>(Message::class.java)
     )
-
-
 }
