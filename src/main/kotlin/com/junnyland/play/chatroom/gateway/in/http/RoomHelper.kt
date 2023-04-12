@@ -21,5 +21,8 @@ interface RoomHelper {
 
         @PostMapping
         fun save(@RequestBody room: Room) = repository.save(room)
+
+        @DeleteMapping("/{name}")
+        fun delete(@PathVariable("name") name: String) = repository.delete(name)
     }
 }
