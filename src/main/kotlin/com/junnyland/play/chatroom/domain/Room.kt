@@ -1,7 +1,7 @@
 package com.junnyland.play.chatroom.domain
 
 data class Room(
-    val id: String,
+    val id: String = "",
     val name: String,
     val description: String,
     val status:Status
@@ -12,3 +12,4 @@ data class Room(
         OPEN, CLOSE
     }
 }
+
