@@ -1,4 +1,4 @@
-package com.junnyland.play.config.socket
+package com.junnyland.play.global.socket
 
 import org.springframework.context.annotation.Configuration
 import org.springframework.messaging.simp.config.MessageBrokerRegistry
