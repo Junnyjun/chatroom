@@ -11,6 +11,7 @@ interface ChatRepository {
     fun save(room: Room): Room
     fun findAll(page: Pageable): Page<Room>
     fun find(name: String): Room
+    fun delete(name: String)
 
     @Repository
     class ChatNoSqlRepository(
@@ -28,6 +29,9 @@ interface ChatRepository {
         override fun find(name: String) = repository.findByName(name)
             ?.toDomain()
             ?: throw IllegalArgumentException("Room name not found")
+
+        override fun delete(name: String) = repository.deleteByName(name)
+
     }
 
 

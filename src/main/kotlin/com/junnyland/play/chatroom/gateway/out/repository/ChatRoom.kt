@@ -9,9 +9,9 @@ import org.springframework.data.mongodb.core.mapping.Document
 @Document(collection = "chatRoom")
 class ChatRoom(
     @Id private val id: String = "",
-    @Indexed(unique = true) private val name: String = "",
+    @Indexed(unique = true) private val name: String,
     private var description: String = "",
-    private val status: Room.Status = OPEN
+    private val status: Room.Status = OPEN,
 ) {
 
     fun toDomain(): Room {
