@@ -1,8 +1,8 @@
 package com.junnyland.play.chatroom.gateway.out.message
 
+import com.junnyland.play.chatroom.SendMessage
 import com.junnyland.play.chatroom.domain.Message
 import org.slf4j.LoggerFactory
-import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.messaging.handler.annotation.DestinationVariable
 import org.springframework.messaging.handler.annotation.MessageMapping
 import org.springframework.messaging.handler.annotation.Payload
@@ -18,7 +18,7 @@ interface Sender {
     @RestController
     @RequestMapping("/sender")
     class KafkaSender(
-        private val sender: KafkaTemplate<String,Message>,
+        private val sendMessage: SendMessage
     ) : Sender {
         val logger = LoggerFactory.getLogger("sender")
 
@@ -26,7 +26,7 @@ interface Sender {
         override fun send(
             @RequestBody message: Message
         ) {
-            val get = sender.send("chatroom", message)
+            sendMessage.execute(message)
         }
 
         @SendTo("/topic/group/{roomName}")
