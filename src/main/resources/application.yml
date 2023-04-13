@@ -1,7 +1,7 @@
 spring:
   data:
     mongodb:
-      host: 140.238.14.148
+      host: main.junnyland.com
       port: 27017
       password: junny1234
       username: junnyland
