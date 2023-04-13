@@ -20,8 +20,8 @@ interface Receiver {
             groupId = "junnyland",
             containerFactory = "kafkaListenerContainerFactory"
         )
-        override fun enter(message: Message, ) {
-            template.convertAndSend("/topic/group", message)
+        override fun enter(message: Message) {
+            template.convertAndSend("/topic/group/${message.roomName}", message)
         }
     }
 }

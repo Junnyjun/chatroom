@@ -1,6 +1,7 @@
 package com.junnyland.play.chatroom.gateway.out.message
 
 import com.junnyland.play.chatroom.domain.Message
+import org.slf4j.LoggerFactory
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.messaging.handler.annotation.DestinationVariable
 import org.springframework.messaging.handler.annotation.MessageMapping
@@ -19,12 +20,13 @@ interface Sender {
     class KafkaSender(
         private val sender: KafkaTemplate<String,Message>,
     ) : Sender {
+        val logger = LoggerFactory.getLogger("sender")
+
         @PostMapping("/message")
         override fun send(
             @RequestBody message: Message
         ) {
-            val get = sender.send("chatroom", message).get()
-            println("get = ${get.recordMetadata}")
+            val get = sender.send("chatroom", message)
         }
 
         @SendTo("/topic/group/{roomName}")
@@ -32,7 +34,10 @@ interface Sender {
         override fun broadcast(
             @Payload message: Message,
             @DestinationVariable("roomName") roomName: String
-        ) = message
+        ): Message {
+            logger.info("room : $roomName , message : $message")
+            return message
+        }
     }
 
 }
