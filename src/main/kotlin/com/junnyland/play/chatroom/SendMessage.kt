@@ -5,8 +5,7 @@ import com.junnyland.play.chatroom.gateway.out.repository.ChatMessageRepository
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.stereotype.Service
 
-@FunctionalInterface
-interface SendMessage {
+fun interface SendMessage {
     fun execute(message: Message)
 
     @Service
