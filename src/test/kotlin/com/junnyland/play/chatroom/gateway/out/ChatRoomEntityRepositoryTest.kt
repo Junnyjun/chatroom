@@ -1,8 +1,8 @@
 package com.junnyland.play.chatroom.gateway.out
 
 import com.junnyland.play.chatroom.domain.Room
-import com.junnyland.play.chatroom.gateway.out.repository.ChatMongoRepository
-import com.junnyland.play.chatroom.gateway.out.repository.ChatRepository
+import com.junnyland.play.chatroom.gateway.out.repository.mongo.ChatRoomMongoRepository
+import com.junnyland.play.chatroom.gateway.out.repository.ChatRoomRepository
 import org.assertj.core.api.Assertions.assertThatCode
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
@@ -13,15 +13,15 @@ import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest
 
 @Disabled
 @DataMongoTest
-class ChatRepositoryTest {
+class ChatRoomEntityRepositoryTest {
     @Autowired
-    lateinit var mongo: ChatMongoRepository
+    lateinit var mongo: ChatRoomMongoRepository
 
-    lateinit var repository: ChatRepository
+    lateinit var repository: ChatRoomRepository
 
     @BeforeEach
     fun setup() {
-        repository = ChatRepository.ChatNoSqlRepository(mongo)
+        repository = ChatRoomRepository.ChatNoSqlRoomRepository(mongo)
     }
 
     @Test
