@@ -1,4 +1,4 @@
-package com.junnyland.play.global.htpp
+package com.junnyland.play.global.http
 
 import org.springframework.http.HttpStatus.BAD_REQUEST
 import org.springframework.http.ResponseEntity
