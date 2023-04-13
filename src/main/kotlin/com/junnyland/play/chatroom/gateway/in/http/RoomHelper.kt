@@ -1,7 +1,7 @@
 package com.junnyland.play.chatroom.gateway.`in`.http
 
 import com.junnyland.play.chatroom.domain.Room
-import com.junnyland.play.chatroom.gateway.out.repository.ChatRepository
+import com.junnyland.play.chatroom.gateway.out.repository.ChatRoomRepository
 import org.springframework.data.domain.Pageable
 import org.springframework.data.web.PageableDefault
 import org.springframework.web.bind.annotation.*
@@ -12,7 +12,7 @@ interface RoomHelper {
     @RestController
     @RequestMapping("/room")
     class RoomHttpHelper(
-        private val repository: ChatRepository,
+        private val repository: ChatRoomRepository,
     ) : RoomHelper {
         @GetMapping
         fun getAll(@PageableDefault(size = 20, page = 0) page: Pageable) = repository.findAll(page)
